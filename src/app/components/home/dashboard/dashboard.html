@@ -1,0 +1,11 @@
+
+<div class="d-flex">
+
+    @for (item of dataNotas; track $index) {
+
+        <app-card-notas
+        [titulo]="item.titulo"
+        ></app-card-notas>
+    }
+</div>
+
