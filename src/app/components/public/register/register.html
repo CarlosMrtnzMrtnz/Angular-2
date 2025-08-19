@@ -1,0 +1,30 @@
+<div class="my-5 d-flex justify-content-center">
+    <h2 class="fs-1 fw-bold">Register</h2>
+</div>
+
+<div class="d-flex justify-content-center align-content-center">
+    <form [formGroup]="formRegister" class="form">
+        <p class="form-title">Register your account</p>
+        <div class="input-container">
+            <input formControlName="email" type="email" placeholder="Enter email">
+            <span>
+            </span>
+        </div>
+        <div class="input-container">
+            <input formControlName="userName" type="text" placeholder="Enter user name">
+            <span>
+            </span>
+        </div>
+        <div class="input-container">
+            <input min formControlName="password" type="password" placeholder="Enter password">
+        </div>
+            <button [class.disabled]="formRegister.valid" (click)="register()" type="submit" class="submit">
+        Sign up
+        </button>
+
+        <p class="signup-link">
+        Do you have an account?
+        <a routerLink="/login">Login</a>
+        </p>
+    </form>
+</div>

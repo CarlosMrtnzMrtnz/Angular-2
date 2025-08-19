@@ -1,6 +1,15 @@
-
-
 @for (item of items; track $index) {
-    <p>{{item.titulo}}</p>
+    @if (item.status == false) {
+        <div class="note-item">
+            <div class="note-content">
+                <h3 class="note-title">{{item.titulo}}</h3>
+                <p class="note-text">{{item.descripcion}}</p>
+            </div>
+            <div class="note-actions">
+                <button (click)="recuperarNota(item._id)" class="btn restore">♻ Recuperar</button>
+                <button (click)="deletNota(item._id)" class="btn delete">🗑 Eliminar</button>
+            </div>
+        </div>
+    }
 
 }

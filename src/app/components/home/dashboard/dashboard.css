@@ -1,0 +1,70 @@
+/* From Uiverse.io by Maximinodotpy */
+.inputGroup {
+  font-family: 'Segoe UI', sans-serif;
+  margin: 1em 0 1em 0;
+  max-width: 190px;
+  position: relative;
+}
+
+.inputGroup input {
+  font-size: 100%;
+  padding: 0.8em;
+  outline: none;
+  border: 1px solid rgb(200, 200, 200);
+  background-color: transparent;
+  border-radius: 20px;
+  width: 100%;
+}
+
+.inputGroup label {
+  font-size: 100%;
+  position: absolute;
+  left: 0;
+  padding: 0.8em;
+  margin-left: 0.5em;
+  pointer-events: none;
+  transition: all 0.3s ease;
+  color: rgb(100, 100, 100);
+}
+
+.inputGroup :is(input:focus, input:valid)~label {
+  transform: translateY(-50%) scale(.9);
+  margin: 0em;
+  margin-left: 1.3em;
+  padding: 0.4em;
+  background-color: #ffffff;
+}
+
+.inputGroup :is(input:focus, input:valid) {
+  border-color: rgb(150, 150, 200);
+}
+
+
+/*-------------------------}*/
+    .custom-textarea {
+      background-color: #f1f5f9;     /* bg-slate-100 */
+      color: #475569;               /* text-slate-600 */
+      height: 7rem;                 /* h-28 */
+      border: 1px solid #e2e8f0;    /* border-slate-200 */
+      border-radius: 0.5rem;        /* rounded-lg */
+      padding: 0.5rem;              /* p-2 */
+      resize: none;                 /* resize-none */
+      outline: none;                /* outline-none */
+      transition: border-color 0.3s ease; /* duration-300 */
+      width: 100%;                  /* col-span-6 (simulación ancho completo) */
+      font-size: 1rem;
+    }
+
+    .custom-textarea::placeholder {
+      color: #475569;   /* placeholder:text-slate-600 */
+      opacity: 0.5;     /* placeholder:opacity-50 */
+    }
+
+    .custom-textarea:focus {
+      border-color: rgb(150, 150, 200);
+    }
+
+    .activo {
+        background-color: #598eff !important;
+        font-weight: bold;
+    }
