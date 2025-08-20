@@ -1,0 +1,18 @@
+<div class="d-flex justify-content-center p-5">
+    <div [formGroup]="formUser" class="form-box">
+        <form class="form">
+            <span class="title">Register</span>
+            <span class="subtitle">Create a free account with your email.</span>
+            <div class="form-container">
+                <input formControlName="userName" type="text" class="input" placeholder="Full Name">
+                <input formControlName="email" type="email" class="input" placeholder="Email">
+                <input formControlName="password" type="password" class="input" placeholder="Password">
+            </div>
+            <button (click)="registrarse()" >Sign up</button>
+        </form>
+        <div class="form-section">
+            <p>Have an account? <a routerLink="/login">Log in</a> </p>
+        </div>
+    </div>
+</div>
+

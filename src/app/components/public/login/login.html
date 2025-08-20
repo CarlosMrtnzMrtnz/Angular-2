@@ -1,0 +1,16 @@
+<div class="d-flex justify-content-center p-5">
+    <div [formGroup]="formLogin" class="form-box">
+        <form class="form">
+            <span class="title">Login</span>
+            <span class="subtitle">Inicia session.</span>
+            <div class="form-container">
+                <input formArrayName="email" type="email" class="input" placeholder="Email">
+                <input formArrayName="password" type="password" class="input" placeholder="Password">
+            </div>
+            <button (click)="login()" >Sign in</button>
+        </form>
+        <div class="form-section">
+            <p> Dont have an account? <a routerLink="/register">Register</a> </p>
+        </div>
+    </div>
+</div>

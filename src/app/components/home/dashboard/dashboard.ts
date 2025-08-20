@@ -20,7 +20,7 @@ export class Dashboard {
                 this.dataNotas = notas
             },
             error:(error:any)=> {
-
+                console.log(error);
             }
         })
     }
