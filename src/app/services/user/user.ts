@@ -9,6 +9,8 @@ export class User {
 
     constructor(private http : HttpClient){}
 
+
+
     register (body: any) {
         return this.http.post(`${this.apiUrl}/user`, body)
     }

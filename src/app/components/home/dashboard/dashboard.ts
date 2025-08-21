@@ -23,6 +23,9 @@ export class Dashboard {
                 console.log(error);
             }
         })
+
+        console.log(sessionStorage.getItem('user'));
+
     }
 
 

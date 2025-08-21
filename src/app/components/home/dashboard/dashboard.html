@@ -1,11 +1,45 @@
+<!-- Button trigger modal -->
+ <div class="d-flex justify-content-center">
+     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+         Crear nota
+     </button>
+ </div>
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">Crear Nota</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+            </div>
+            <div class="modal-body">
+                <!-- FORMULARIO DE NOTAS -->
+                <form id="notaForm">
+                    <div class="mb-3">
+                        <label for="tituloNota" class="form-label">Título</label>
+                        <input type="text" class="form-control custom-input" id="tituloNota" placeholder="Escribe un título..." required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="descripcionNota" class="form-label">Descripción</label>
+                        <textarea class="form-control custom-textarea" id="descripcionNota" rows="4" placeholder="Escribe la descripción..." required></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="submit" form="notaForm" class="btn btn-primary">Guardar Nota</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <div class="d-flex">
 
     @for (item of dataNotas; track $index) {
 
-        <app-card-notas
-        [titulo]="item.titulo"
-        ></app-card-notas>
+    <app-card-notas [titulo]="item.titulo"></app-card-notas>
     }
 </div>
-

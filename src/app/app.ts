@@ -12,4 +12,15 @@ import { Sidebar } from './components/home/sidebar/sidebar';
 })
 export class App {
   protected title = 'Angular_2025_2';
+
+  get loguiado():boolean {
+    let getToken = sessionStorage.getItem('token')
+
+    if (getToken == null) {
+        return false
+    }
+
+    return true
+
+  }
 }

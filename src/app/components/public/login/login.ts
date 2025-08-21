@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { User } from '../../../services/user/user';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -27,13 +28,39 @@ export class Login {
     }
 
     login () {
-        this.userService.login(this.formLogin.value).subscribe({
-            next:()=> {
+        if (this.formLogin.valid) {
+            this.userService.login(this.formLogin.value).subscribe({
+                next:(dataApi: any)=> {
+                    sessionStorage.setItem('token', dataApi.token)
+                    sessionStorage.setItem('user', dataApi.payload.id)
+                    Swal.fire({
+                        title:"Bienvenido",
+                        icon:"success",
+                        draggable: true
+                })
+                },
+                error:(error:any)=> {
+                    console.log(error);
 
-            },
-            error:(error:any)=> {
+                    Swal.fire({
+                        title:"Ups! algo salio mal intenta de nuevo",
+                        icon:"warning",
+                        draggable: true,
+                        text:`${error.error.error}`
+                })
+                }
+            })
 
-            }
-        })
+        } else {
+            Swal.fire({
+                title:"Formulario invalido",
+                icon:"warning",
+                draggable: true,
+                text: "Diligencia los campos correctamente!"
+            })
+            console.log(this.formLogin.value);
+
+        }
+
     }
 }

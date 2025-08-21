@@ -4,8 +4,8 @@
             <span class="title">Login</span>
             <span class="subtitle">Inicia session.</span>
             <div class="form-container">
-                <input formArrayName="email" type="email" class="input" placeholder="Email">
-                <input formArrayName="password" type="password" class="input" placeholder="Password">
+                <input formControlName="email" type="email" class="input" placeholder="Email">
+                <input formControlName="password" type="password" class="input" placeholder="Password">
             </div>
             <button (click)="login()" >Sign in</button>
         </form>
