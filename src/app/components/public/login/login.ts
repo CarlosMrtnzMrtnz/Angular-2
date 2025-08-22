@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { User } from '../../../services/user/user';
 import Swal from 'sweetalert2';
 
@@ -20,11 +20,17 @@ export class Login {
 
     formLogin!: FormGroup
 
-    constructor (private fb: FormBuilder) {
+    constructor (private fb: FormBuilder, private router : Router) {
         this.formLogin = fb.group({
             email: ["", [Validators.required, Validators.email]],
             password: ["", [Validators.required, Validators.minLength(4)]]
         })
+    }
+
+    ngOnInit () {
+        if (sessionStorage.getItem('token')) {
+            this.router.navigate(['/dashboard'])
+        }
     }
 
     login () {

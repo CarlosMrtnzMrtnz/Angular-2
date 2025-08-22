@@ -1,5 +1,6 @@
 import { ChangeDetectorRef, Component, inject } from '@angular/core';
 import { Notas } from '../../../services/notas/notas';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -12,15 +13,20 @@ import { Notas } from '../../../services/notas/notas';
 export class CardTrash {
 items: any[] = [];
 
-  constructor(private serviceNotas: Notas, private cd: ChangeDetectorRef) {}
+  constructor(private serviceNotas: Notas, private router : Router) {}
 
   ngOnInit() {
+
+    if (!sessionStorage.getItem('token')) {
+    this.router.navigate(['/login'])
+    }
+
     console.log('Dashboard iniciado');
     this.serviceNotas.getNote().subscribe({
       next: (dataApi: any) => {
         console.log('Datos recibidos:', dataApi);
         this.items = dataApi;
-        this.cd.detectChanges(); // 🔹 fuerza actualización inmediata
+
       },
       error: (error: any) => {
         console.error('Error cargando notas:', error);

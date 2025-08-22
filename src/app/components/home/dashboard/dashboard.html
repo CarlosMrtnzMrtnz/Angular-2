@@ -1,5 +1,5 @@
 <!-- Button trigger modal -->
- <div class="d-flex justify-content-center">
+ <div class="d-flex justify-content-center my-5">
      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
          Crear nota
      </button>
@@ -16,20 +16,20 @@
             </div>
             <div class="modal-body">
                 <!-- FORMULARIO DE NOTAS -->
-                <form id="notaForm">
+                <form [formGroup]="formNotas" id="notaForm">
                     <div class="mb-3">
                         <label for="tituloNota" class="form-label">Título</label>
-                        <input type="text" class="form-control custom-input" id="tituloNota" placeholder="Escribe un título..." required>
+                        <input formControlName="titulo" type="text" class="form-control custom-input" id="tituloNota" placeholder="Escribe un título..." required>
                     </div>
                     <div class="mb-3">
                         <label for="descripcionNota" class="form-label">Descripción</label>
-                        <textarea class="form-control custom-textarea" id="descripcionNota" rows="4" placeholder="Escribe la descripción..." required></textarea>
+                        <textarea formControlName="descripcion" class="form-control custom-textarea" id="descripcionNota" rows="4" placeholder="Escribe la descripción..." required></textarea>
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                <button type="submit" form="notaForm" class="btn btn-primary">Guardar Nota</button>
+                <button (click)="addNota()" type="submit" form="notaForm" class="btn btn-primary">Guardar Nota</button>
             </div>
         </div>
     </div>
@@ -40,6 +40,46 @@
 
     @for (item of dataNotas; track $index) {
 
-    <app-card-notas [titulo]="item.titulo"></app-card-notas>
+        @if (item.status == true) {
+            <app-card-notas
+            [titulo]="item.titulo"
+            [descripcion]="item.descripcion"
+            [createAt]="item.createdAt"
+            (update)="editarNota(item._id)"
+            ></app-card-notas>
+        }
     }
+</div>
+
+
+
+<!-- Edit form -->
+
+<div class="modal fade" id="editar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">Actualizar Nota</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+            </div>
+            <div class="modal-body">
+                <!-- FORMULARIO DE NOTAS -->
+                <form [formGroup]="formNotas" id="notaForm">
+                    <div class="mb-3">
+                        <label for="tituloNota" class="form-label">Título</label>
+                        <input formControlName="titulo" type="text" class="form-control custom-input" id="tituloNota" placeholder="Escribe un título..." required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="descripcionNota" class="form-label">Descripción</label>
+                        <textarea formControlName="descripcion" class="form-control custom-textarea" id="descripcionNota" rows="4" placeholder="Escribe la descripción..." required></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button (click)="ahoraSiEditar()"  type="button" form="notaForm" class="btn btn-primary">Actualizar Nota</button>
+            </div>
+        </div>
+    </div>
 </div>

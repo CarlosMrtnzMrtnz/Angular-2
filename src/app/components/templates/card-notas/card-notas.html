@@ -1,8 +1,8 @@
 <div class="card">
     <h3 class="card__title">{{titulo}} </h3>
-    <p class="card__content"> </p>
+    <p class="card__content">{{descripcion}} </p>
     <div class="card__date">
-        April 15, 2022
+        {{createAt | date: 'dd/MM/yyyy HH:mm' }}
     </div>
     <div (click)="drop = !drop" class="card__arrow">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" height="15" width="15">
@@ -13,7 +13,7 @@
         @if (drop) {
         <div class="dropdown-menu show"
             style="position: absolute; right: 0; top: 20px; background: #fff; border: 1px solid #ccc; z-index: 10;">
-            <button  class="dropdown-item">Editar</button>
+            <button (click)="enviarEvento()" data-bs-toggle="modal" data-bs-target="#editar" class="dropdown-item">Editar</button>
             <button class="dropdown-item">Eliminar</button>
         </div>
         }

@@ -26,6 +26,12 @@ export class Register {
         })
     }
 
+    ngOnInit () {
+        if (sessionStorage.getItem('token')) {
+            this.router.navigate(['/dashboard'])
+        }
+    }
+
     registrarse () {
 
         if (this.formUser.valid) {
