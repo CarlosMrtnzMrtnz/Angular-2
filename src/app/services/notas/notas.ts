@@ -6,19 +6,25 @@ import { Injectable } from '@angular/core';
 })
 export class Notas {
    private apiUrl: string = "http://localhost:3000/api"
-   token = sessionStorage.getItem('token')
+
   constructor(private http:HttpClient){}
 
 
+  header () {
+    const token = sessionStorage.getItem('token')
+    let headers:any = new HttpHeaders({
+    'authorization': `Bearer ${token}`
+    })
+    return headers
+  }
 
   getNote(){
-    return this.http.get(`${this.apiUrl}/notas`)
+     const headers = this.header()
+    return this.http.get(`${this.apiUrl}/notas`, {headers})
   }
 
   createNota(body: any) {
-    let headers = new HttpHeaders({
-    'authorization': `Bearer ${this.token}`
-  })
+    let headers = this.header()
     return this.http.post(`${this.apiUrl}/createNote`, body, {headers})
   }
 

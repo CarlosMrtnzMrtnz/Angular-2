@@ -84,4 +84,11 @@
   background-color: #005ce6;
 }
 
+.x{
+  background-color: #aec3e4 !important;
 
+}
+
+.opacidad {
+    border: 1px solid red;
+}
