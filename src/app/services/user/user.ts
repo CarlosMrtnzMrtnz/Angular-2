@@ -1,11 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { ApiUrl } from '../../environments/api-url';
 
 @Injectable({
   providedIn: 'root'
 })
 export class User {
-    private apiUrl:String ="http://localhost:3000/api"
+    private apiUrl:String = ApiUrl.url
 
     constructor(private http : HttpClient){}
 

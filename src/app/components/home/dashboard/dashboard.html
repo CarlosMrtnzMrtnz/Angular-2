@@ -5,7 +5,7 @@
      </button>
  </div>
 
-<!-- Modal -->
+<!-- Create form Modal -->
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
     aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -25,6 +25,10 @@
                         <label for="descripcionNota" class="form-label">Descripción</label>
                         <textarea formControlName="descripcion" class="form-control custom-textarea" id="descripcionNota" rows="4" placeholder="Escribe la descripción..." required></textarea>
                     </div>
+                    <div class="">
+                        <label for="aria-hiddenchivo" class="form-label">Descripción</label>
+                        <input  (change)="cargarImagen($event)" type="file" class="form-control custom-input" id="aria-hiddenchivo" placeholder="Add foto..." >
+                    </div>
                 </form>
             </div>
             <div class="modal-footer">
@@ -43,6 +47,7 @@
         @if (item.status == true) {
             <app-card-notas
             [titulo]="item.titulo"
+            [imagen]="item.imagen"
             [descripcion]="item.descripcion"
             [createAt]="item.createdAt"
             (update)="editarNota(item._id)"
@@ -53,7 +58,7 @@
 
 
 
-<!-- Edit form -->
+<!-- Edit form Modal-->
 
 <div class="modal fade" id="editar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
     aria-labelledby="staticBackdropLabel" aria-hidden="true">

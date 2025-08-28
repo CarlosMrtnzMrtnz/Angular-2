@@ -33,6 +33,8 @@ export class Register {
     }
 
     registrarse () {
+        let x =this.formUser.value
+        console.log(x.password);
 
         if (this.formUser.valid) {
             this.userService.register(this.formUser.value).subscribe({

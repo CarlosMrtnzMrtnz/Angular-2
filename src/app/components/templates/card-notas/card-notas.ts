@@ -14,6 +14,7 @@ export class CardNotas {
 
     @Input() titulo!: string
     @Input() descripcion!: string
+    @Input() imagen!: string
     @Input() createAt!: string
 
     @Output() update = new EventEmitter
