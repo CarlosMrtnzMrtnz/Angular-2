@@ -44,57 +44,57 @@ export class Dashboard {
     }
 
     cargarImagen(event: any) {
-  const input = event.target as HTMLInputElement;
+        const input = event.target as HTMLInputElement;
 
-  if (input.files && input.files.length > 0) {
-    this.imagenFile = input.files[0];
-    console.log(">>>Imagen FILE", this.imagenFile);
+        if (input.files && input.files.length > 0) {
+            this.imagenFile = input.files[0];
+            console.log(">>>Imagen FILE", this.imagenFile);
 
-    // opcional: reflejar en el form
-    this.formNotas.patchValue({ imagen: this.imagenFile });
-  } else {
-    console.warn("No se seleccionó ningún archivo");
-  }
+            // opcional: reflejar en el form
+            this.formNotas.patchValue({ imagen: this.imagenFile });
+        } else {
+            console.warn("No se seleccionó ningún archivo");
+        }
 }
 
-addNota() {
-  if (this.formNotas.valid) {
-    // 👇 Aquí convertimos el form en FormData
-    const formData = new FormData();
-    formData.append("titulo", this.formNotas.get('titulo')?.value);
-    formData.append("descripcion", this.formNotas.get('descripcion')?.value);
-    formData.append("userId", this.formNotas.get('userId')?.value);
+    addNota() {
+    if (this.formNotas.valid) {
+        // 👇 Aquí convertimos el form en FormData
+        const formData = new FormData();
+        formData.append("titulo", this.formNotas.get('titulo')?.value);
+        formData.append("descripcion", this.formNotas.get('descripcion')?.value);
+        formData.append("userId", this.formNotas.get('userId')?.value);
 
-    if (this.imagenFile) {
-      formData.append("imagen", this.imagenFile); // el archivo real
-    }
+        if (this.imagenFile) {
+        formData.append("imagen", this.imagenFile); // el archivo real
+        }
 
-    this.noteServices.createNota(formData).subscribe({
-      next: (dataApi: any) => {
-        this.render();
-        this.formNotas.reset();
-        flashy('¡Tu nota ha sido creada!', {
-          type: 'success',
-          position: 'top-right',
-          duration: 4000,
-          closable: true,
-          animation: 'slide',
-          theme: 'light'
+        this.noteServices.createNota(formData).subscribe({
+        next: (dataApi: any) => {
+            this.render();
+            this.formNotas.reset();
+            flashy('¡Tu nota ha sido creada!', {
+            type: 'success',
+            position: 'top-right',
+            duration: 4000,
+            closable: true,
+            animation: 'slide',
+            theme: 'light'
+            });
+        },
+        error: (error: any) => {
+            console.log(error);
+            flashy.error('Algo salió mal');
+        }
         });
-      },
-      error: (error: any) => {
-        console.log(error);
-        flashy.error('Algo salió mal');
-      }
-    });
-  } else {
-    flashy.warning('Formulario inválido!', {
-      position: 'top-center',
-      animation: 'bounce',
-      theme: 'dark'
-    });
-  }
-}
+    } else {
+        flashy.warning('Formulario inválido!', {
+        position: 'top-center',
+        animation: 'bounce',
+        theme: 'dark'
+        });
+    }
+    }
 
 
     render() {
